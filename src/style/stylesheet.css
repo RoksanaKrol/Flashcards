@@ -1,0 +1,43 @@
+.flashcard {
+    -fx-border-width: 2;
+    -fx-border-color: #AAA;
+    -fx-border-style: solid;
+    -fx-padding: 20px;
+    -fx-background-color: #EEE;
+}
+
+.button {
+   -fx-background-color: #888;
+   -fx-text-fill: white;
+   -fx-float: left;
+}
+.button:hover {
+    -fx-background-color: #777;
+}
+.nd {
+    -fx-background-color: red;
+}
+
+#easy {
+    -fx-background-color: #91a336;
+}
+#easy:hover {
+    -fx-background-color: #809225;
+}
+
+#ok {
+    -fx-background-color: #2db588;
+}
+#ok:hover {
+    -fx-background-color: #1ca477;
+}
+
+#hard {
+    -fx-background-color: #d94c3f;
+}
+#hard:hover {
+    -fx-background-color: #c83b2e;
+}
+#front {
+    -fx-color: red;
+}
