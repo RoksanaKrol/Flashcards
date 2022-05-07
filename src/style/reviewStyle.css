@@ -1,0 +1,35 @@
+/* FLASHCARD */
+.flashcard {
+    -fx-border-width: 2;
+    -fx-border-color: #AAA;
+    -fx-border-style: solid;
+    -fx-padding: 20px;
+    -fx-background-color: #EEE;
+}
+
+/* EASY BUTTON */
+#easy {
+    -fx-background-color: #91a336;
+    -fx-text-fill: #FFF;
+}
+#easy:hover {
+    -fx-background-color: #809225;
+}
+
+/* OK BUTTON */
+#ok {
+    -fx-background-color: #2db588;
+    -fx-text-fill: #FFF;
+}
+#ok:hover {
+    -fx-background-color: #1ca477;
+}
+
+/* HARD BUTTON */
+#hard {
+    -fx-background-color: #d94c3f;
+    -fx-text-fill: #FFF;
+}
+#hard:hover {
+    -fx-background-color: #c83b2e;
+}

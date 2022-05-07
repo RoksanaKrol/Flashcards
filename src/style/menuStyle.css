@@ -1,0 +1,8 @@
+#menuLabel {
+    -fx-font: bold 40px arial;
+    -fx-text-fill: #097b87;
+    -fx-background-color: #EEE;
+    -fx-padding: 10.0;
+    -fx-background-radius: 10;
+    -fx-margin-bottom: 30;
+}
