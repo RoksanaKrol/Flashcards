@@ -1,18 +1,38 @@
 package com.flashcards;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Card {
-    String front;
-    String back;
-    LocalDateTime lastReview;
-    LocalDateTime nextReview;
+    private int id;
+    private int idDeck;
+    private String front;
+    private String back;
+    private LocalDate lastReview;
+    private LocalDate nextReview;
 
-    public Card(String front, String back, LocalDateTime lastReview, LocalDateTime nextReview) {
+    public Card(int id, int idDeck, String front, String back, LocalDate lastReview, LocalDate nextReview) {
+        this.id = id;
+        this.idDeck = idDeck;
         this.front = front;
         this.back = back;
         this.lastReview = lastReview;
         this.nextReview = nextReview;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIdDeck() {
+        return idDeck;
+    }
+
+    public void setIdDeck(int idDeck) {
+        this.idDeck = idDeck;
     }
 
     public String getFront() {
@@ -31,19 +51,23 @@ public class Card {
         this.back = back;
     }
 
-    public LocalDateTime getLastReview() {
+    public LocalDate getLastReview() {
         return lastReview;
     }
 
-    public void setLastReview(LocalDateTime lastReview) {
+    public void setLastReview(LocalDate lastReview) {
         this.lastReview = lastReview;
     }
 
-    public LocalDateTime getNextReview() {
+    public LocalDate getNextReview() {
         return nextReview;
     }
 
-    public void setNextReview(LocalDateTime nextReview) {
+    public void setNextReview(LocalDate nextReview) {
         this.nextReview = nextReview;
+    }
+    @Override
+    public String toString() {
+        return "(Card) ["+id+"] "+front+" | "+back+" (last review "+lastReview+" next review "+nextReview+")";
     }
 }

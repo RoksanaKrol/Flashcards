@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class ReviewController {
@@ -39,16 +38,12 @@ public class ReviewController {
     private VBox backBox;
     private int cardIndex = 0;
 
-    ArrayList<Card> cards = new ArrayList<>();
-    // Deck deck = new Deck(cards);
+    Database database = new Database("database.db");
+    ArrayList<Card> cards;
 
     @FXML
     protected void initialize() {
-        //default cards
-        cards.add(new Card("dog","pies", LocalDateTime.now(),LocalDateTime.now()));
-        cards.add(new Card("cat","kot", LocalDateTime.now(),LocalDateTime.now()));
-        cards.add(new Card("mouse","mysz", LocalDateTime.now(),LocalDateTime.now()));
-        cards.add(new Card("fox","lis", LocalDateTime.now(),LocalDateTime.now()));
+        cards = database.selectCards(1);
         review();
     }
     @FXML

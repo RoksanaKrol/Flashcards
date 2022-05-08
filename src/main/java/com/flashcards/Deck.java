@@ -1,19 +1,31 @@
 package com.flashcards;
 
-import java.util.ArrayList;
-
 public class Deck {
-    ArrayList<Card> deck;
+    private int id;
+    private String name;
 
-    public Deck(ArrayList<Card> deck) {
-        this.deck = deck;
+    public Deck(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public ArrayList<Card> getDeck() {
-        return deck;
+    public int getId() {
+        return id;
     }
 
-    public void setDeck(ArrayList<Card> deck) {
-        this.deck = deck;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    @Override
+    public String toString() {
+        return "(Deck) ["+id+"]"+name;
     }
 }
