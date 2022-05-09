@@ -31,8 +31,6 @@ public class ReviewController {
     @FXML
     private Button show;
     @FXML
-    private Button review;
-    @FXML
     private VBox frontBox;
     @FXML
     private VBox backBox;
@@ -92,8 +90,6 @@ public class ReviewController {
     }
     @FXML
     protected void review() {
-        review.setVisible(false);
-        review.setManaged(false);
         front.setVisible(true);
         front.setManaged(true);
         frontBox.setVisible(true);
