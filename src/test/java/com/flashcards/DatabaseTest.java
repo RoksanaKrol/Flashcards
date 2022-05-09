@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseTest {
-    Database db = new Database("dataabaseTest.db");
+    Database db = new Database("databaseTest.db");
 
     @Test
     void insertDeck() {
@@ -16,6 +16,10 @@ class DatabaseTest {
     @Test
     void updateDeck() {
         assert(db.updateDeck(1,"deck2"));
+    }
+    @Test
+    void selectDecks() {
+        assertNotNull(db.selectDecks());
     }
     @Test
     void insertCard() {

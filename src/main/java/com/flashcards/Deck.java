@@ -1,20 +1,20 @@
 package com.flashcards;
 
 public class Deck {
-    private int id;
+    private int idDeck;
     private String name;
 
-    public Deck(int id, String name) {
-        this.id = id;
+    public Deck(int idDeck, String name) {
+        this.idDeck = idDeck;
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public int getIdDeck() {
+        return idDeck;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdDeck(int idDeck) {
+        this.idDeck = idDeck;
     }
 
     public String getName() {
@@ -26,6 +26,6 @@ public class Deck {
     }
     @Override
     public String toString() {
-        return "(Deck) ["+id+"]"+name;
+        return "(Deck) ["+idDeck+"]"+name;
     }
 }

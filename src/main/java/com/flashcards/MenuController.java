@@ -24,18 +24,21 @@ public class MenuController {
     Scene scene;
     Parent root;
 
-    public void initialize() {
-        VBox.setMargin(menuBox, new Insets(10, 10, 30, 10));
+    @FXML
+    protected void initialize() {
+        VBox.setMargin(menuBox, new Insets(10, 10, 20, 10));
     }
-    public void review(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("review.fxml"));
+    @FXML
+    protected void review(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("choose_deck.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 420, 340);
+        scene = new Scene(root, FlashcardsApplication.getWidth(), FlashcardsApplication.getHeight());
         scene.getStylesheets().add((new File("src/style/stylesheet.css")).toURI().toString());
-        scene.getStylesheets().add((new File("src/style/reviewStyle.css")).toURI().toString());
+        scene.getStylesheets().add((new File("src/style/deckStyle.css")).toURI().toString());
         stage.setResizable(false);
-        stage.setTitle("Flashcards - review");
+        stage.setTitle("Flashcards - decks");
         stage.setScene(scene);
         stage.show();
     }
+
 }

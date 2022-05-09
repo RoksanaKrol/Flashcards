@@ -1,0 +1,9 @@
+#decksButtons > .button {
+    -fx-background-color: #d8d48c;
+    -fx-border-width: 5;
+    -fx-border-color: #8971c7;
+    -fx-border-style: solid;
+}
+#decksButtons > .button:hover {
+    -fx-background-color: #e9e59d;
+}

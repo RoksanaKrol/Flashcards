@@ -82,6 +82,24 @@ public class Database {
         }
         return true;
     }
+    public ArrayList<Deck> selectDecks() {
+        ArrayList<Deck> decks = new ArrayList<>();
+        int idDeck;
+        String name;
+        try {
+            ResultSet result = stat.executeQuery("SELECT * FROM deck;");
+            while(result.next()) {
+                idDeck = result.getInt("id_deck");
+                name = result.getString("name");
+                decks.add(new Deck(idDeck,name));
+            }
+        } catch (SQLException e) {
+            System.err.println("Deck select error");
+            e.printStackTrace();
+            return null;
+        }
+        return decks;
+    }
     public boolean insertCard(int idDeck, String front, String back, LocalDate lastReview, LocalDate nextReview) {
         try {
             PreparedStatement prepStmt = conn.prepareStatement(

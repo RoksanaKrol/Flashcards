@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="body" alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.flashcards.ChooseDeckController">
+    <VBox fx:id="decksButtons" alignment="CENTER" spacing="5.0">
+
+    </VBox>
+    <Button fx:id="backToMenu" text="back to menu" onAction="#backToMenu"/>
+</VBox>
