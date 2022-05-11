@@ -25,9 +25,7 @@ public class Deck {
         this.name = name;
     }
     @Override
-    /*public String toString() {
-        return String.valueOf(idDeck);
-    }*/
+
     public String toString() {
         return name;
     }

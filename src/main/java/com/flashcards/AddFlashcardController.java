@@ -32,7 +32,14 @@ public class AddFlashcardController extends MenuOption {
 
     @FXML
     protected void save(ActionEvent event) {
-        Deck deck = cb.getValue();
+        Deck deck;
+        if (cb.getValue() == null) {
+            deck = db.selectDecks().get(0);
+        } else {
+            deck = cb.getValue();
+        }
         db.insertCard(deck.getIdDeck(),front.getText(),back.getText(), LocalDate.now(),LocalDate.now());
+        front.setText("");
+        back.setText("");
     }
 }
