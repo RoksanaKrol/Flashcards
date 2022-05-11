@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.ChoiceBoxListCell?>
+<VBox styleClass="body" alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.flashcards.AddFlashcardController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <VBox fx:id="addFlashcard" alignment="CENTER" spacing="10.0">
+        <Label text="front"/>
+        <TextArea fx:id="front" styleClass="flashcard" maxHeight="100.0"/>
+        <Label text="back"/>
+        <TextArea fx:id="back"  styleClass="flashcard" maxHeight="100.0"/>
+        <HBox fx:id="deck">
+            <Label text="Deck: "/>
+        </HBox>
+    </VBox>
+    <Button fx:id="save" text="save" onAction="#save"/>
+    <Button fx:id="backToMenu" text="back to menu" onAction="#backToMenu"/>
+</VBox>

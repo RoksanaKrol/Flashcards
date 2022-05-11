@@ -1,0 +1,14 @@
+.label {
+    -fx-font: bold 16px arial;
+    -fx-background-color: #097b87;
+    -fx-padding: 5.0;
+    -fx-margin: 5.0;
+    -fx-text-fill: #EEE;
+    -fx-background-radius: 10;
+}
+#save {
+    -fx-background-color: #74d96c;
+}
+#save:hover {
+    -fx-background-color: #63c85b;
+}

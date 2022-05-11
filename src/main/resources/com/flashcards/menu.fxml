@@ -14,7 +14,7 @@
     </VBox>
     <Button fx:id="review" text="Review" onAction="#review"/>
     <Button text="Make a new deck"/>
-    <Button text="Add new flashcards"/>
+    <Button fx:id="addFlashcard" text="Add new flashcards" onAction="#addFlashcard"/>
     <Button text="Search flashcards"/>
     <Button text="Remove flashcards"/>
 </VBox>

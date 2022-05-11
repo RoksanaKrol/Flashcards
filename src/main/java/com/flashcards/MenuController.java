@@ -17,6 +17,7 @@ import java.io.IOException;
 
 public class MenuController {
     public Button review;
+    public Button addFlashcard;
     public VBox menuBox;
     @FXML
     private Label menuLabel;
@@ -41,4 +42,16 @@ public class MenuController {
         stage.show();
     }
 
+    public void addFlashcard(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("add_flashcard.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, FlashcardsApplication.getWidth(), FlashcardsApplication.getHeight());
+        scene.getStylesheets().add((new File("src/style/stylesheet.css")).toURI().toString());
+        scene.getStylesheets().add((new File("src/style/reviewStyle.css")).toURI().toString());
+        scene.getStylesheets().add((new File("src/style/addFlashcardStyle.css")).toURI().toString());
+        stage.setResizable(false);
+        stage.setTitle("Flashcards - add flashcard");
+        stage.setScene(scene);
+        stage.show();
+    }
 }
