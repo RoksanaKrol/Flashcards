@@ -100,6 +100,22 @@ public class Database {
         }
         return decks;
     }
+    public Deck findDeck(int idDeck) {
+        Deck deck;
+        String name = "";
+        try {
+            ResultSet result = stat.executeQuery("SELECT * FROM deck WHERE id_deck="+idDeck+";");
+            while(result.next()) {
+                name = result.getString("name");
+            }
+            deck = new Deck(idDeck,name);
+        } catch (SQLException e) {
+            System.err.println("Deck find error");
+            e.printStackTrace();
+            return null;
+        }
+        return deck;
+    }
     public boolean insertCard(int idDeck, String front, String back, LocalDate lastReview, LocalDate nextReview) {
         try {
             PreparedStatement prepStmt = conn.prepareStatement(
@@ -140,6 +156,30 @@ public class Database {
             LocalDate nextReview;
             while(result.next()) {
                 idCard = result.getInt("id_card");
+                front = result.getString("front");
+                back = result.getString("back");
+                lastReview = result.getDate("last_review").toLocalDate();
+                nextReview = result.getDate("next_review").toLocalDate();
+                cards.add(new Card(idCard,idDeck,front,back,lastReview,nextReview));
+            }
+        } catch (SQLException e) {
+            System.err.println("Cards select error");
+            e.printStackTrace();
+            return null;
+        }
+        return cards;
+    }
+    public ArrayList<Card> selectAllCards() {
+        ArrayList<Card> cards = new ArrayList<>();
+        try {
+            ResultSet result = stat.executeQuery("SELECT * FROM card;");
+            int idCard,idDeck;
+            String front, back;
+            LocalDate lastReview;
+            LocalDate nextReview;
+            while(result.next()) {
+                idCard = result.getInt("id_card");
+                idDeck = result.getInt("id_deck");
                 front = result.getString("front");
                 back = result.getString("back");
                 lastReview = result.getDate("last_review").toLocalDate();

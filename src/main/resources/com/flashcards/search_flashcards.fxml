@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox styleClass="body" alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.flashcards.SearchFlashcardController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <VBox fx:id="vbox" alignment="CENTER" spacing="10.0">
+
+    </VBox>
+    <Button fx:id="remove" text="remove" onAction="#remove"/>
+    <Button text="back to menu" onAction="#backToMenu"/>
+</VBox>

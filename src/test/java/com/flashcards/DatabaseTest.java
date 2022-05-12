@@ -22,12 +22,20 @@ class DatabaseTest {
         assertNotNull(db.selectDecks());
     }
     @Test
+    void findDeck() {
+        assertNotNull(db.findDeck(1));
+    }
+    @Test
     void insertCard() {
         assert(db.insertCard(1,"dog","pies", LocalDate.now(),LocalDate.now()));
     }
     @Test
     void selectCards() {
         assertNotNull(db.selectCards(1));
+    }
+    @Test
+    void selectAllCards() {
+        assertNotNull(db.selectAllCards());
     }
     @Test
     void updateCard() {

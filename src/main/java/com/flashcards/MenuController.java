@@ -20,6 +20,7 @@ public class MenuController {
     public Button addFlashcard;
     public Button addDeck;
     public VBox menuBox;
+    public Button searchFlashcards;
 
     @FXML
     private Label menuLabel;
@@ -62,10 +63,21 @@ public class MenuController {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, FlashcardsApplication.getWidth(), FlashcardsApplication.getHeight());
         scene.getStylesheets().add((new File("src/style/stylesheet.css")).toURI().toString());
-        scene.getStylesheets().add((new File("src/style/reviewStyle.css")).toURI().toString());
         scene.getStylesheets().add((new File("src/style/addDeleteStyle.css")).toURI().toString());
         stage.setResizable(false);
         stage.setTitle("Flashcards - add deck");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void searchFlashcards(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("search_flashcards.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, FlashcardsApplication.getWidth(), FlashcardsApplication.getHeight());
+        scene.getStylesheets().add((new File("src/style/stylesheet.css")).toURI().toString());
+        scene.getStylesheets().add((new File("src/style/addDeleteStyle.css")).toURI().toString());
+        stage.setResizable(false);
+        stage.setTitle("Flashcards - search flashcards");
         stage.setScene(scene);
         stage.show();
     }

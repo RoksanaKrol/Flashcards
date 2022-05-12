@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class FlashcardsApplication extends Application {
-    private static final int width = 440;
+    private static final int width = 580;
     private static final int height = 440;
 
     @Override

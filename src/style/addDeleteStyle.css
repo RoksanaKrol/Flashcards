@@ -12,3 +12,9 @@
 #save:hover {
     -fx-background-color: #63c85b;
 }
+#remove {
+    -fx-background-color: #d96c6c;
+}
+#remove:hover {
+    -fx-background-color: #c85b5b;
+}

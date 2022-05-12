@@ -68,6 +68,6 @@ public class Card {
     }
     @Override
     public String toString() {
-        return "(Card) ["+id+"] "+front+" | "+back+" (last review "+lastReview+" next review "+nextReview+")";
+        return "["+id+", "+front+" | "+back+" last review "+lastReview+" next review "+nextReview+"]";
     }
 }

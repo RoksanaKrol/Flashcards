@@ -13,8 +13,7 @@
         <Label fx:id="menuLabel" text="Flashcards"/>
     </VBox>
     <Button fx:id="review" text="Review" onAction="#review"/>
-    <Button fx:id="addDeck" text="Make a new deck" onAction="#addDeck"/>
     <Button fx:id="addFlashcard" text="Add new flashcards" onAction="#addFlashcard"/>
-    <Button text="Search flashcards"/>
-    <Button text="Remove flashcards"/>
+    <Button fx:id="searchFlashcards" text="Search flashcards" onAction="#searchFlashcards"/>
+    <Button fx:id="addDeck" text="Make a new deck" onAction="#addDeck"/>
 </VBox>
