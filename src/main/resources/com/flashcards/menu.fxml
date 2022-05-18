@@ -10,10 +10,8 @@
         <Insets bottom="40.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
     <VBox fx:id="menuBox" styleClass="body" alignment="CENTER" spacing="20.0">
-        <Label fx:id="menuLabel" text="Flashcards"/>
+        <Label text="Flashcards"/>
     </VBox>
-    <Button fx:id="review" text="Review" onAction="#review"/>
-    <Button fx:id="addFlashcard" text="Add new flashcards" onAction="#addFlashcard"/>
-    <Button fx:id="searchFlashcards" text="Search flashcards" onAction="#searchFlashcards"/>
-    <Button fx:id="addDeck" text="Make a new deck" onAction="#addDeck"/>
+    <Button text="decks" onAction="#deck"/>
+    <Button text="flashcards" onAction="#flashcards"/>
 </VBox>

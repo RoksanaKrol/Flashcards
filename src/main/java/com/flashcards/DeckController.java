@@ -16,20 +16,21 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class ChooseDeckController extends MenuOption {
-    public Button backToMenu;
+public class DeckController extends MenuOption {
     public VBox decksButtons = new VBox();
-    public Button review;
+    MenuController mc = new MenuController();
+
     Stage stage;
     Scene scene;
     Parent root;
+
     private static int idDeck;
     TableView<Deck> table = new TableView<>();
+    Database database = new Database("database.db");
 
 
     @FXML
     protected void initialize() {
-        Database database = new Database("database.db");
         ObservableList<Deck> data = FXCollections.observableArrayList(database.selectDecks());
         table.setMaxSize(400,300);
         table.setItems(data);
@@ -49,20 +50,30 @@ public class ChooseDeckController extends MenuOption {
 
     @FXML
     protected void review(ActionEvent event) throws IOException {
+
+            TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
+            int index = pos.getRow();
+
+            idDeck = table.getItems().get(index).getIdDeck();
+
+            root = FXMLLoader.load(getClass().getResource("review.fxml"));
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root, FlashcardsApplication.getWidth(), FlashcardsApplication.getHeight());
+            scene.getStylesheets().add((new File("src/style/stylesheet.css")).toURI().toString());
+            scene.getStylesheets().add((new File("src/style/reviewStyle.css")).toURI().toString());
+            stage.setResizable(false);
+            stage.setTitle("Flashcards - review");
+            stage.setScene(scene);
+            stage.show();
+    }
+    @FXML
+    protected void remove(ActionEvent event) throws IOException {
         TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
-        int index = pos.getRow();
-        int selected = table.getItems().get(index).getIdDeck();
-
-        idDeck = selected;
-
-        root = FXMLLoader.load(getClass().getResource("review.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, FlashcardsApplication.getWidth(), FlashcardsApplication.getHeight());
-        scene.getStylesheets().add((new File("src/style/stylesheet.css")).toURI().toString());
-        scene.getStylesheets().add((new File("src/style/reviewStyle.css")).toURI().toString());
-        stage.setResizable(false);
-        stage.setTitle("Flashcards - review");
-        stage.setScene(scene);
-        stage.show();
+        if (pos != null) {
+            int index = pos.getRow();
+            idDeck = table.getItems().get(index).getIdDeck();
+            database.deleteDeck(idDeck);
+            mc.deck(event);
+        }
     }
 }

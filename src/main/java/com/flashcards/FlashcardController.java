@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class SearchFlashcardController extends MenuOption {
+public class FlashcardController extends MenuOption {
     public Button remove;
     @FXML
     protected VBox vbox;
@@ -51,9 +51,12 @@ public class SearchFlashcardController extends MenuOption {
     @FXML
     protected void remove(ActionEvent event) throws IOException {
         TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
-        int index = pos.getRow();
-        int selected = table.getItems().get(index).getId();
-        db.deleteCard(selected);
-        mc.searchFlashcards(event);
+        if (pos != null) {
+            int index = pos.getRow();
+            int selected = table.getItems().get(index).getId();
+
+            db.deleteCard(selected);
+            mc.flashcards(event);
+        }
     }
 }

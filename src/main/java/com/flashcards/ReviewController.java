@@ -33,7 +33,7 @@ public class ReviewController extends MenuOption {
 
     @FXML
     protected void initialize() {
-        cards = database.selectCards(ChooseDeckController.getIdDeck());
+        cards = database.selectCards(DeckController.getIdDeck());
         review();
     }
     @FXML

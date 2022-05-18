@@ -6,15 +6,15 @@
     -fx-text-fill: #EEE;
     -fx-background-radius: 10;
 }
-#save {
+.save {
     -fx-background-color: #74d96c;
 }
-#save:hover {
+.save:hover {
     -fx-background-color: #63c85b;
 }
-#remove {
+.remove {
     -fx-background-color: #d96c6c;
 }
-#remove:hover {
+.remove:hover {
     -fx-background-color: #c85b5b;
 }

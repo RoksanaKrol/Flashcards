@@ -3,11 +3,13 @@
 <?import javafx.scene.layout.*?>
 
 <VBox styleClass="body" alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.flashcards.ChooseDeckController">
+      fx:controller="com.flashcards.DeckController">
         <VBox styleClass="decksButtons" fx:id="decksButtons" alignment="CENTER" spacing="5.0">
         </VBox>
-    <HBox alignment="CENTER" spacing="5.0">
+    <HBox alignment="CENTER" spacing="20.0">
+        <Button styleClass="save" text="add new" onAction="#addDeck"/>
         <Button styleClass="review" text="review" onAction="#review"/>
+        <Button styleClass="remove" text="remove" onAction="#remove"/>
     </HBox>
-    <Button fx:id="backToMenu" text="back to menu" onAction="#backToMenu"/>
+    <Button text="back to menu" onAction="#backToMenu"/>
 </VBox>

@@ -3,22 +3,18 @@ package com.flashcards;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
-public class AddFlashcardController extends MenuOption {
-    public Button backToMenu;
-    public VBox addFlashcard;
+public class AddFlashcardController {
     public TextArea front;
     public TextArea back;
     public HBox deck;
     Database db = new Database("database.db");
-    public Button save;
 
     @FXML
     ChoiceBox<Deck> cb;
@@ -41,5 +37,10 @@ public class AddFlashcardController extends MenuOption {
         db.insertCard(deck.getIdDeck(),front.getText(),back.getText(), LocalDate.now(),LocalDate.now());
         front.setText("");
         back.setText("");
+    }
+    @FXML
+    protected void back(ActionEvent event) throws IOException {
+        MenuController mc = new MenuController();
+        mc.flashcards(event);
     }
 }

@@ -2,16 +2,13 @@ package com.flashcards;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 public class AddDeckController extends MenuOption {
 
-    public VBox addDeck;
     public TextField name;
-    public Button save;
-    public Button backToMenu;
 
     Database db = new Database("database.db");
 
@@ -19,5 +16,11 @@ public class AddDeckController extends MenuOption {
     protected void save(ActionEvent event) {
         db.insertDeck(name.getText());
         name.setText("");
+    }
+
+    @FXML
+    protected void back(ActionEvent event) throws IOException {
+        MenuController mc = new MenuController();
+        mc.deck(event);
     }
 }

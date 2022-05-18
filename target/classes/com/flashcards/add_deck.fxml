@@ -9,10 +9,10 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <VBox fx:id="addDeck" alignment="CENTER" spacing="10.0">
+    <VBox alignment="CENTER" spacing="10.0">
         <Label text="name"/>
         <TextField fx:id="name" maxWidth="200.0"/>
     </VBox>
-    <Button fx:id="save" text="save" onAction="#save"/>
-    <Button fx:id="backToMenu" text="back to menu" onAction="#backToMenu"/>
+    <Button styleClass="save" text="save" onAction="#save"/>
+    <Button text="back" onAction="#back"/>
 </VBox>
