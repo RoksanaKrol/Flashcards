@@ -33,3 +33,8 @@
 #hard:hover {
     -fx-background-color: #c83b2e;
 }
+
+/* REVIEW BUTTON */
+.review {
+    -fx-background-color: #a3ed74;
+}

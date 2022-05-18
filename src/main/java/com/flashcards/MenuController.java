@@ -38,7 +38,8 @@ public class MenuController {
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, FlashcardsApplication.getWidth(), FlashcardsApplication.getHeight());
         scene.getStylesheets().add((new File("src/style/stylesheet.css")).toURI().toString());
-        scene.getStylesheets().add((new File("src/style/deckStyle.css")).toURI().toString());
+        scene.getStylesheets().add((new File("src/style/addDeleteStyle.css")).toURI().toString());
+        scene.getStylesheets().add((new File("src/style/reviewStyle.css")).toURI().toString());
         stage.setResizable(false);
         stage.setTitle("Flashcards - decks");
         stage.setScene(scene);

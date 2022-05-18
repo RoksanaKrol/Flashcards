@@ -52,10 +52,8 @@ public class SearchFlashcardController extends MenuOption {
     protected void remove(ActionEvent event) throws IOException {
         TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
         int index = pos.getRow();
-        String selected = table.getItems().get(index).toString();
-        selected = selected.substring(1,selected.indexOf(","));
-        System.out.println(selected);
-        db.deleteCard(Integer.parseInt(selected));
+        int selected = table.getItems().get(index).getId();
+        db.deleteCard(selected);
         mc.searchFlashcards(event);
     }
 }

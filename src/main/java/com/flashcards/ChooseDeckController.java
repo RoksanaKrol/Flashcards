@@ -1,49 +1,46 @@
 package com.flashcards;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class ChooseDeckController extends MenuOption {
     public Button backToMenu;
     public VBox decksButtons = new VBox();
+    public Button review;
     Stage stage;
     Scene scene;
     Parent root;
     private static int idDeck;
+    TableView<Deck> table = new TableView<>();
+
 
     @FXML
     protected void initialize() {
         Database database = new Database("database.db");
-        displayDecks(database);
-    }
+        ObservableList<Deck> data = FXCollections.observableArrayList(database.selectDecks());
+        table.setMaxSize(400,300);
+        table.setItems(data);
 
-    @FXML
-    protected void displayDecks(Database db) {
-        ArrayList<Deck> decks = db.selectDecks();
-        for (Deck deck : decks) {
-            Button deckButton = new Button();
-            deckButton.setText(deck.getName());
-            deckButton.setOnAction((ActionEvent)->{
-                idDeck = deck.getIdDeck();
-                try {
-                    review(ActionEvent);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-            decksButtons.getChildren().add(deckButton);
-        }
+        TableColumn<Deck, String> name = new TableColumn<>("name");
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        name.setPrefWidth(400);
+
+        table.getColumns().add(name);
+
+        decksButtons.getChildren().add(table);
     }
 
     public static int getIdDeck() {
@@ -52,6 +49,12 @@ public class ChooseDeckController extends MenuOption {
 
     @FXML
     protected void review(ActionEvent event) throws IOException {
+        TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
+        int index = pos.getRow();
+        int selected = table.getItems().get(index).getIdDeck();
+
+        idDeck = selected;
+
         root = FXMLLoader.load(getClass().getResource("review.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root, FlashcardsApplication.getWidth(), FlashcardsApplication.getHeight());
