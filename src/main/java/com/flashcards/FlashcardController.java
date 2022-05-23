@@ -8,10 +8,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
-
 public class FlashcardController extends MenuOption {
     public Button remove;
+    public Label error;
     @FXML
     protected VBox vbox;
     MenuController mc = new MenuController();
@@ -22,6 +21,8 @@ public class FlashcardController extends MenuOption {
 
     @FXML
     protected void initialize() {
+        error.setText("");
+        error.setManaged(false);
         TableColumn<Card, String>  front = new TableColumn<>("front");
         front.setCellValueFactory(new PropertyValueFactory<>("front"));
         front.setPrefWidth(90);
@@ -49,14 +50,19 @@ public class FlashcardController extends MenuOption {
     }
 
     @FXML
-    protected void remove(ActionEvent event) throws IOException {
-        TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
-        if (pos != null) {
-            int index = pos.getRow();
-            int selected = table.getItems().get(index).getId();
+    protected void remove(ActionEvent event) {
+        try {
+            TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
+            if (pos != null) {
+                int index = pos.getRow();
+                int selected = table.getItems().get(index).getId();
 
-            db.deleteCard(selected);
-            mc.flashcards(event);
+                db.deleteCard(selected);
+                mc.flashcards(event);
+            }
+        } catch (Exception e) {
+            error.setManaged(true);
+            error.setText("Choose flashcard to delete");
         }
     }
 }

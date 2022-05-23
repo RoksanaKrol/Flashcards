@@ -14,3 +14,9 @@
 .button:hover {
     -fx-background-color: #a2cdd2;
 }
+
+/*ERROR*/
+.error {
+    -fx-font: 16px arial !important;
+    -fx-text-fill: #ff000d !important;
+}

@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class FlashcardsApplication extends Application {
     private static final int width = 580;
-    private static final int height = 440;
+    private static final int height = 500;
 
     @Override
     public void start(Stage stage) throws IOException {
