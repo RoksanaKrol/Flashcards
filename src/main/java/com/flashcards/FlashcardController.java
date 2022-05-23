@@ -32,7 +32,7 @@ public class FlashcardController extends MenuOption {
         back.setPrefWidth(90);
 
         TableColumn<Card, String> deck = new TableColumn<>("deck");
-        deck.setCellValueFactory(new PropertyValueFactory<>("idDeck"));
+        deck.setCellValueFactory(new PropertyValueFactory<>("nameDeck"));
         deck.setPrefWidth(90);
 
         TableColumn<Card, String>  lastReview = new TableColumn<>("last review");

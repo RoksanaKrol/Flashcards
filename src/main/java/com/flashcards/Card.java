@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Card {
     private int id;
     private int idDeck;
+    private String nameDeck = getNameDeck();
     private String front;
     private String back;
     private LocalDate lastReview;
@@ -69,5 +70,10 @@ public class Card {
     @Override
     public String toString() {
         return "["+id+", "+front+" | "+back+" last review "+lastReview+" next review "+nextReview+"]";
+    }
+
+    public String getNameDeck() {
+        Database db = new Database("database.db");
+        return db.findDeck(idDeck).getName();
     }
 }
