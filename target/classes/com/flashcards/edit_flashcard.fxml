@@ -18,6 +18,6 @@
             <Label text="Deck: "/>
         </HBox>
     </VBox>
-    <Button styleClass="save" text="save" onAction="#save"/>
+    <Button styleClass="edit" text="edit" onAction="#edit"/>
     <Button text="back" onAction="#back"/>
 </VBox>

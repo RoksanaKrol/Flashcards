@@ -154,7 +154,7 @@ public class Database {
         LocalDate lastReview = LocalDate.now();
         LocalDate nextReview = LocalDate.now();
         try {
-            ResultSet result = stat.executeQuery("SELECT * FROM card WHERE id_deck="+idCard+";");
+            ResultSet result = stat.executeQuery("SELECT * FROM card WHERE id_card="+idCard+";");
             while(result.next()) {
                 idCard = result.getInt("id_card");
                 front = result.getString("front");
@@ -220,7 +220,7 @@ public class Database {
     public boolean updateCard(int idCard,int idDeck,String front, String back, LocalDate lastReview, LocalDate nextReview) {
         try {
             PreparedStatement prepStmt = conn.prepareStatement(
-                    "UPDATE card SET id_deck = ?, front = ?, back = ?, last_review = ?, next_review = ? WHERE id_card = ?"
+                    "UPDATE card SET id_deck = ?, front = ?, back = ?, last_review = ?, next_review = ? WHERE id_card = ?;"
             );
             prepStmt.setInt(1,idDeck);
             prepStmt.setString(2,front);
@@ -228,6 +228,7 @@ public class Database {
             prepStmt.setDate(4, Date.valueOf(lastReview));
             prepStmt.setDate(5, Date.valueOf(nextReview));
             prepStmt.setInt(6,idCard);
+            prepStmt.execute();
         } catch (SQLException e) {
             System.err.println("Card update error");
             e.printStackTrace();

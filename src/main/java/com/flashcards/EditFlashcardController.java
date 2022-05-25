@@ -10,7 +10,7 @@ import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.time.LocalDate;
-/*
+
 public class EditFlashcardController {
     public TextArea front;
     public TextArea back;
@@ -36,7 +36,7 @@ public class EditFlashcardController {
     }
 
     @FXML
-    protected void save(ActionEvent event) throws IOException {
+    protected void edit(ActionEvent event) throws IOException {
         Deck deck;
         deck = cb.getValue();
 
@@ -53,4 +53,3 @@ public class EditFlashcardController {
         selected = s;
     }
 }
-*/

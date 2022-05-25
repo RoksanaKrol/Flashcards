@@ -14,6 +14,7 @@
     <HBox alignment="CENTER" spacing="25.0">
         <Button fx:id="remove" styleClass="remove" text="remove" onAction="#remove"/>
         <Button text="add new" styleClass="save" onAction="#addFlashcard"/>
+        <Button text="edit" styleClass="edit" onAction="#editFlashcard"/>
     </HBox>
     <Button text="back to menu" onAction="#backToMenu"/>
     <Label styleClass="error" fx:id="error"/>
