@@ -146,6 +146,30 @@ public class Database {
         }
         return true;
     }
+    public Card findCard(int idCard) {
+        Card card;
+        int idDeck = 0;
+        String front = "";
+        String back = "";
+        LocalDate lastReview = LocalDate.now();
+        LocalDate nextReview = LocalDate.now();
+        try {
+            ResultSet result = stat.executeQuery("SELECT * FROM card WHERE id_deck="+idCard+";");
+            while(result.next()) {
+                idCard = result.getInt("id_card");
+                front = result.getString("front");
+                back = result.getString("back");
+                lastReview = result.getDate("last_review").toLocalDate();
+                nextReview = result.getDate("next_review").toLocalDate();
+            }
+            card = new Card(idCard,idDeck,front,back,lastReview,nextReview);
+        } catch (SQLException e) {
+            System.err.println("Card find error");
+            e.printStackTrace();
+            return null;
+        }
+        return card;
+    }
     public ArrayList<Card> selectCards(int idDeck) {
         ArrayList<Card> cards = new ArrayList<>();
         try {
@@ -193,16 +217,17 @@ public class Database {
         }
         return cards;
     }
-    public boolean updateCard(int idCard,String front, String back, LocalDate lastReview, LocalDate nextReview) {
+    public boolean updateCard(int idCard,int idDeck,String front, String back, LocalDate lastReview, LocalDate nextReview) {
         try {
             PreparedStatement prepStmt = conn.prepareStatement(
-                    "UPDATE card SET front = ?, back = ?, last_review = ?, next_review = ? WHERE id_card = ?"
+                    "UPDATE card SET id_deck = ?, front = ?, back = ?, last_review = ?, next_review = ? WHERE id_card = ?"
             );
-            prepStmt.setString(1,front);
-            prepStmt.setString(2,back);
-            prepStmt.setDate(3, Date.valueOf(lastReview));
-            prepStmt.setDate(4, Date.valueOf(nextReview));
-            prepStmt.setInt(5,idCard);
+            prepStmt.setInt(1,idDeck);
+            prepStmt.setString(2,front);
+            prepStmt.setString(3,back);
+            prepStmt.setDate(4, Date.valueOf(lastReview));
+            prepStmt.setDate(5, Date.valueOf(nextReview));
+            prepStmt.setInt(6,idCard);
         } catch (SQLException e) {
             System.err.println("Card update error");
             e.printStackTrace();

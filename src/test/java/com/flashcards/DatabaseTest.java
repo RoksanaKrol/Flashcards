@@ -30,6 +30,10 @@ class DatabaseTest {
         assert(db.insertCard(1,"dog","pies", LocalDate.now(),LocalDate.now()));
     }
     @Test
+    void findCard() {
+        assertNotNull(db.findCard(1));
+    }
+    @Test
     void selectCards() {
         assertNotNull(db.selectCards(1));
     }
@@ -39,7 +43,7 @@ class DatabaseTest {
     }
     @Test
     void updateCard() {
-        assert(db.updateCard(1,"cat","kot", LocalDate.now(),LocalDate.now()));
+        assert(db.updateCard(1,1,"cat","kot", LocalDate.now(),LocalDate.now()));
     }
     @Test
     void deleteCard() {
