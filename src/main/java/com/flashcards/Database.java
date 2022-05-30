@@ -157,6 +157,7 @@ public class Database {
             ResultSet result = stat.executeQuery("SELECT * FROM card WHERE id_card="+idCard+";");
             while(result.next()) {
                 idCard = result.getInt("id_card");
+                idDeck = result.getInt("id_deck");
                 front = result.getString("front");
                 back = result.getString("back");
                 lastReview = result.getDate("last_review").toLocalDate();

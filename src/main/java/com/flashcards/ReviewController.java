@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ReviewController extends MenuOption {
@@ -26,7 +27,7 @@ public class ReviewController extends MenuOption {
     private VBox frontBox;
     @FXML
     private VBox backBox;
-    private int cardIndex = 0;
+    private int cardIndex;
 
     Database database = new Database("database.db");
     ArrayList<Card> cards;
@@ -34,20 +35,24 @@ public class ReviewController extends MenuOption {
     @FXML
     protected void initialize() {
         cards = database.selectCards(DeckController.getIdDeck());
+        cardIndex = 0;
         review();
     }
     @FXML
     protected void easy() {
+        setNextReviewDate(4);
         cardIndex++;
         nextCard();
     }
     @FXML
     protected void ok() {
+        setNextReviewDate(1);
         cardIndex++;
         nextCard();
     }
     @FXML
     protected void hard() {
+        setNextReviewDate(0);
         cardIndex++;
         nextCard();
     }
@@ -88,12 +93,12 @@ public class ReviewController extends MenuOption {
         hard.setManaged(false);
         show.setVisible(true);
         show.setManaged(true);
-        displayCard(cardIndex);
+        displayCard();
     }
 
-    private void displayCard(int index) {
-        if (index > -1 && index < cards.size()) {
-            Card card = cards.get(index);
+    private void displayCard() {
+        if (cardIndex > -1 && cardIndex < cards.size()) {
+            Card card = cards.get(cardIndex);
             front.setText(card.getFront());
             back.setText(card.getBack());
         } else {
@@ -104,6 +109,12 @@ public class ReviewController extends MenuOption {
             front.setText("All card reviewed");
             backToMenu.setVisible(true);
             backToMenu.setManaged(true);
+        }
+    }
+    private void setNextReviewDate(int inHowManyDays) {
+        if (cardIndex > -1 && cardIndex < cards.size()) {
+            Card card = database.findCard(cards.get(cardIndex).getId());
+            database.updateCard(card.getId(), card.getIdDeck(), card.getFront(), card.getBack(), LocalDate.now(), LocalDate.ofYearDay(card.getNextReview().getYear(), LocalDate.now().getDayOfYear()+inHowManyDays));
         }
     }
 }
