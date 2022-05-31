@@ -194,6 +194,31 @@ public class Database {
         }
         return cards;
     }
+    public ArrayList<Card> selectCardsToReview(int idDeck) {
+        ArrayList<Card> cards = new ArrayList<>();
+        try {
+            ResultSet result = stat.executeQuery("SELECT * FROM card WHERE id_deck = "+idDeck+";");
+            int idCard;
+            String front, back;
+            LocalDate lastReview;
+            LocalDate nextReview;
+            while(result.next()) {
+                idCard = result.getInt("id_card");
+                front = result.getString("front");
+                back = result.getString("back");
+                lastReview = result.getDate("last_review").toLocalDate();
+                nextReview = result.getDate("next_review").toLocalDate();
+                if (LocalDate.now().compareTo(nextReview) >= 0) {
+                    cards.add(new Card(idCard,idDeck,front,back,lastReview,nextReview));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Cards select error");
+            e.printStackTrace();
+            return null;
+        }
+        return cards;
+    }
     public ArrayList<Card> selectAllCards() {
         ArrayList<Card> cards = new ArrayList<>();
         try {

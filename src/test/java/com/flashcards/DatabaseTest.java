@@ -38,6 +38,10 @@ class DatabaseTest {
         assertNotNull(db.selectCards(1));
     }
     @Test
+    void selectCardsToReview() {
+        assertNotNull(db.selectCardsToReview(1));
+    }
+    @Test
     void selectAllCards() {
         assertNotNull(db.selectAllCards());
     }
